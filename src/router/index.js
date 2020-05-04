@@ -18,5 +18,10 @@ export default new Router({
             // component: HelloWorld,
             component: () => import('@/views/home/index'),
         },
+        {
+            path: '/query/unit-pay-cost',
+            name: 'unit-pay-cost',
+            component: () => import('@/views/query/unit-pay-cost'),
+        },
     ]
 })
