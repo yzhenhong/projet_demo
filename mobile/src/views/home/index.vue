@@ -19,4 +19,7 @@ export default {
 </script>
 
 <style scoped lang="less">
+.home{
+  font-size: 14px;
+}
 </style>
