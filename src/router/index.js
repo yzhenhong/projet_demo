@@ -6,9 +6,17 @@ Vue.use(Router)
 
 export default new Router({
     mode: 'history',
-    routes: [{
-        path: '/',
-        name: 'HelloWorld',
-        component: HelloWorld
-    }]
+    routes: [
+        {
+            path: '/',
+            name: 'default',
+            redirect: '/home',
+        },
+        {
+            path: '/home',
+            name: 'home',
+            // component: HelloWorld,
+            component: () => import('@/views/home/index'),
+        },
+    ]
 })

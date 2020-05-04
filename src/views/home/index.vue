@@ -1,5 +1,6 @@
 <template>
   <div class="home-index">
+    home-index
   </div>
 </template>
 
@@ -9,6 +10,8 @@ export default {
   data () {
     return {
     }
+  },
+  created () {
   }
 }
 </script>
