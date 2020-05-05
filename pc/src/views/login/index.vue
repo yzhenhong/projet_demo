@@ -1,17 +1,17 @@
 <template>
-  <div class="home">
-    home
+  <div class="login-index">
+    login-index
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'login-index',
   data() {
     return {
     }
   },
-  created() {
+  created () {
   },
   methods: {
   }
