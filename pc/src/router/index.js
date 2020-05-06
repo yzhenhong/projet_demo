@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import layout from '@/components/layout/layout-main.vue'
+import layoutMain from '@/components/layout/layout-main.vue'
 
 const _import = require('./_import_' + process.env.NODE_ENV)
 
@@ -35,7 +35,7 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: layout,
+        component: layoutMain,
         children: [
             {
                 path: 'modify-password',
@@ -46,8 +46,25 @@ const routes = [
                 path: 'login-index',
                 name: 'login-index',
                 component: () => import ('@/views/login/index.vue')
-            }
+            },
         ]
+    },
+    // {
+    //     path: '/user',
+    //     name: 'user',
+    //     component: layoutMain,
+    //     children: [
+    //         {
+    //             path: 'list',
+    //             name: 'list',
+    //             component: () => import ('@/views/user/list.vue')
+    //         },
+    //     ]
+    // },
+    {
+        path: '/user-list',
+        name: 'user-list',
+        component: () => import ('@/views/user/list.vue')
     },
     {
         path: '/404',

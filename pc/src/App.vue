@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view  class="appVue-router-view"/>
   </div>
 </template>
 
@@ -10,9 +10,9 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-  @import './assets/css/common.less';
-  @import './assets/css/reset.css';
+<style lang="less">
+@import './assets/css/common.less';
+@import './assets/css/reset.css';
    #nprogress .bar {
     background: @blue-color!important; //自定义颜色
   }

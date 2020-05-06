@@ -1,7 +1,7 @@
 <template>
   <div class="layout-main">
     <layout-header wd='100px'></layout-header>
-    <router-view class="layout-main-router-view"/>
+    <router-view class="layoutMainVue-router-view"/>
   </div>
 </template>
 
@@ -29,8 +29,10 @@ export default {
   height: 100%;
   position: relative;
   padding-top: 60px;
-  .layout-main-router-view{
+  .layoutMainVue-router-view{
     background: #ffffff;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
