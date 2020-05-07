@@ -54,9 +54,10 @@
       </el-table-column>
     </el-table>
     <el-pagination
+      v-if="listTotal>0"
       background
       layout="prev, pager, next"
-      :total="100"
+      :total="listTotal"
     >
     </el-pagination>
   </div>
@@ -71,32 +72,35 @@ export default {
   },
   data() {
     return {
+      listTotal: 0,
       input: '',
-      tableData: [{
-        institution: '深圳市南山区人民医院',
-        name: '王小虎',
-        title: '医师',
-        tel: '1870931271',
+      tableData: [
+        {
+          institution: '深圳市南山区人民医院',
+          name: '王小虎',
+          title: '医师',
+          tel: '1870931271',
+          time: '2020-05-06'
+        }, {
+          institution: '深圳市南山区人民医院',
+          name: '王小虎',
+          title: '医师',
+          tel:'1255',
+          time: '2020-05-06'
+        }, {
+          institution: '深圳市南山区人民医院',
+          name: '王小虎',
+          title: '医师',
+        tel:'12565655',
         time: '2020-05-06'
-      }, {
-        institution: '深圳市南山区人民医院',
-        name: '王小虎',
-        title: '医师',
-        tel:'1255',
-        time: '2020-05-06'
-      }, {
-        institution: '深圳市南山区人民医院',
-        name: '王小虎',
-        title: '医师',
-       tel:'12565655',
-       time: '2020-05-06'
-      }, {
-        institution: '深圳市南山区人民医院3',
-        name: '王小虎',
-        title: '医师',
-        tel:'654645645',
-        time: '2020-05-06'
-      }]
+        }, {
+          institution: '深圳市南山区人民医院3',
+          name: '王小虎',
+          title: '医师',
+          tel:'654645645',
+          time: '2020-05-06'
+        }
+      ]
     }
   },
   methods: {

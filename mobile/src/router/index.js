@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+// import layoutMain from './/layout-main.vue'
 
 const _import = require('./_import_' + process.env.NODE_ENV)
 
@@ -19,6 +20,7 @@ const routes = [
     path: '/home',
     name: 'home',
     redirect: '/home/index',
+    // component: layoutMain,
     component: {
       template: '<router-view />'
     },
@@ -32,6 +34,11 @@ const routes = [
         component: _import('home/index')
       }
     ]
+  },
+  {
+    path: '/task-pending',
+    name: 'task-pending',
+    component: () => import ('@/views/task/pending.vue')
   },
 ]
 

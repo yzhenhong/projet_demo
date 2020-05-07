@@ -11,11 +11,11 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/',
-        name: 'default',
-        redirect: '/home/index',
-    },
+    // {
+    //     path: '/',
+    //     name: 'default',
+    //     redirect: '/home/index',
+    // },
     {
         path: '/home',
         name: 'home',
@@ -45,37 +45,42 @@ const routes = [
             {
                 path: 'login-index',
                 name: 'login-index',
-                component: () => import ('@/views/login/index.vue')
+                component: () => import ('@/views/login/index')
+            },
+        ]
+    },
+    {
+        path: '/list',
+        name: 'list',
+        component: layoutMain,
+        children: [
+            {
+                path: 'user',
+                name: 'user',
+                component: () => import ('@/views/list/user.vue')
+            },
+            {
+                path: 'user-modify',
+                name: 'user-modify',
+                component: () => import ('@/views/user/modify.vue')
+            },
+            {
+                path: 'task',
+                name: 'task',
+                component: () => import ('@/views/list/task.vue')
             },
         ]
     },
     // {
-    //     path: '/user',
-    //     name: 'user',
-    //     component: layoutMain,
-    //     children: [
-    //         {
-    //             path: 'list',
-    //             name: 'list',
-    //             component: () => import ('@/views/user/list.vue')
-    //         },
-    //     ]
+    //     path: '/404',
+    //     name: '404',
+    //     component: _import('err/404')
     // },
-    {
-        path: '/user-list',
-        name: 'user-list',
-        component: () => import ('@/views/user/list.vue')
-    },
-    {
-        path: '/404',
-        name: '404',
-        component: _import('err/404')
-    },
-    {
-        path: '*',
-        name: 'default',
-        redirect: '/404',
-    },
+    // {
+    //     path: '*',
+    //     name: 'default',
+    //     redirect: '/404',
+    // },
 ]
 
 const router = new VueRouter({

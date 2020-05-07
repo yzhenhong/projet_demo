@@ -6,11 +6,15 @@
       </div>
       <div>众包平台管理后台</div>
     </div>
-    <div>
-      <div>任务管理</div>
-      <div>用户管理</div>
-      <div>收益管理</div>
-    </div>
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+    >
+      <el-menu-item index="1" @click="task">任务管理</el-menu-item>
+      <el-menu-item index="2" @click="user">用户管理</el-menu-item>
+      <el-menu-item index="3" @click="earnings">收益管理</el-menu-item>
+    </el-menu>
     <div>
       <el-dropdown  @command="handleCommand">
         <span class="el-dropdown-link">
@@ -30,6 +34,7 @@ export default {
   name: 'layout-header',
   data() {
     return {
+      activeIndex: '1'
     }
   },
   props: {
@@ -39,9 +44,28 @@ export default {
     }
   },
   created() {
-    console.log(this.wd)
+    if(sessionStorage.getItem('activeIndex')){
+      this.activeIndex = sessionStorage.getItem('activeIndex');
+    }
+    console.log(this.activeIndex)
   },
   methods: {
+    task() {
+      sessionStorage.setItem('activeIndex', JSON.stringify(1));
+      if(this.$route.path!='/list/task'){
+        this.$router.push('/list/task')
+      }
+    },
+    user() {
+      sessionStorage.setItem('activeIndex', JSON.stringify(2));
+      if(this.$route.path!='/list/user'){
+        this.$router.push('/list/user')
+      }
+    },
+    earnings() {
+      sessionStorage.setItem('activeIndex', JSON.stringify(3));
+      console.log('earnings')
+    },
     handleCommand(command) {
       if(command=='modify-password') {
         this.$router.push('/login/modify-password')
@@ -86,7 +110,7 @@ export default {
       }
     }
   }
-   >div:nth-child(2){
+  .el-menu-demo{
     flex: 1;
     display: flex;
     align-items: center;
@@ -95,8 +119,13 @@ export default {
     color: #C0C0C0;
     text-align: center;
     justify-content: center;
-    >div{
-      margin-right: 60px;
+    background: #323232;
+    .el-menu-item.is-active{
+      background: #323232;
+      color: #C0C0C0;
+    }
+    .el-menu-item:hover{
+      background: #323232;
     }
   }
    >div:last-child{
