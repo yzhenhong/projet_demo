@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>icon_dcl</title>
+    <desc>Created with Sketch.</desc>
+    <g id="公众号" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0-2首页-空" transform="translate(-30.000000, -474.000000)" fill="#3085FF" fill-rule="nonzero">
+            <g id="编组" transform="translate(0.000000, 436.000000)">
+                <g id="icon_dcl" transform="translate(30.000000, 38.000000)">
+                    <path d="M18,0 C8.0592,0 0,8.0592 0,18 C0,27.9408 8.0592,36 18,36 C27.9408,36 36,27.9408 36,18 C36,8.0592 27.9408,0 18,0 Z M26.3720201,21 L16.6244041,21 C15.7269893,21 15,20.2543998 15,19.334012 L15,7.66598756 C15,6.74588804 15.7272705,6 16.6244041,6 C17.5215376,6 18.2488081,6.74588804 18.2488081,7.66598756 L18.2488081,17.6655798 L26.3755955,17.6655798 C27.2733873,17.6662549 28.0006578,18.4132374 28,19.334012 C27.9993413,20.2547866 27.2710037,21.0006746 26.3732119,21 L26.3720201,21 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

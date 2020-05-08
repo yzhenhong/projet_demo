@@ -2,8 +2,6 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-// import layoutMain from './/layout-main.vue'
-
 const _import = require('./_import_' + process.env.NODE_ENV)
 
 
@@ -17,28 +15,19 @@ const routes = [
     redirect: '/home/index',
   },
   {
-    path: '/home',
-    name: 'home',
-    redirect: '/home/index',
-    // component: layoutMain,
-    component: {
-      template: '<router-view />'
-    },
-    children: [
-      {
-        path: 'index',
-        name: '',
-        meta: {
-          title: '首页'
-        },
-        component: _import('home/index')
-      }
-    ]
+    path: '/home/index',
+    name: 'home-index',
+    component: () => import ('@/views/home/index.vue')
   },
   {
-    path: '/task-pending',
-    name: 'task-pending',
-    component: () => import ('@/views/task/pending.vue')
+    path: '/task-task',
+    name: 'task-task',
+    component: () => import ('@/views/task/task.vue')
+  },
+  {
+    path: '/task-taskbtn',
+    name: 'task-taskbtn',
+    component: () => import ('@/views/task/taskbtn.vue')
   },
 ]
 
@@ -54,7 +43,6 @@ const router = new VueRouter({
     return new Promise(resolve => {
       setTimeout(() => {
         document.querySelectorAll('body')[0].scrollTop = 0
-
         resolve({
           x: 0,
           y: 1

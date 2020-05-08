@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="94px" viewBox="0 0 94 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>icon_shz</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="47" cy="47" r="47"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="94" height="94" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="公众号" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0-1首页" transform="translate(-626.000000, -1477.000000)">
+            <g id="分组-4-copy-5备份-5" transform="translate(0.000000, 1441.000000)">
+                <g id="分组-5">
+                    <g id="icon_shz" transform="translate(626.000000, 36.000000)">
+                        <text id="审核中" transform="translate(47.000000, 47.500000) rotate(-15.000000) translate(-47.000000, -47.500000) " font-family="PingFangSC-Regular, PingFang SC" font-size="24" font-weight="normal" fill="#3085FF">
+                            <tspan x="11" y="56">审核中</tspan>
+                        </text>
+                        <use id="椭圆形" stroke="#3085FF" mask="url(#mask-2)" stroke-width="4" stroke-dasharray="8" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
