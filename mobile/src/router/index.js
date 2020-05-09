@@ -29,6 +29,11 @@ const routes = [
     name: 'task-taskbtn',
     component: () => import ('@/views/task/taskbtn.vue')
   },
+  {
+    path: '/task-particulars',
+    name: 'task-particulars',
+    component: () => import ('@/views/task/particulars.vue')
+  },
 ]
 
 const router = new VueRouter({

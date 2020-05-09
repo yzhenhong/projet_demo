@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="184px" height="184px" viewBox="0 0 184 184" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>icon_add</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="184" height="184"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="184" height="184" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="公众号" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-2待处理任务-详情" transform="translate(-235.000000, -1621.000000)">
+            <g id="编组" transform="translate(30.000000, 1620.000000)">
+                <g id="icon_add" transform="translate(205.000000, 1.000000)">
+                    <use id="矩形备份-2" stroke="#979797" mask="url(#mask-2)" stroke-width="2.64000016" stroke-dasharray="8" xlink:href="#path-1"></use>
+                    <path d="M95,59 L95,91 L127,91 L127,95 L95,95 L95,127 L91,127 L91,94.999 L59,95 L59,91 L91,90.999 L91,59 L95,59 Z" id="形状结合" fill="#B9B9B9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
