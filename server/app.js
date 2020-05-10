@@ -91,9 +91,14 @@ new Promise((resolve, reject)=>{
   })
 
   //配置路由
-  router.get('/',async (ctx)=>{
+  router.get('/api/get',async (ctx)=>{
     // console.log('3、匹配到了这个路由');
-    await  ctx.render('index');
+    console.log(ctx)
+    ctx.body='index';
+  })
+  router.post('/api/post',async (ctx)=>{
+    // console.log('3、匹配到了这个路由');
+    ctx.body=ctx.request.body;
   })
 
   //接收post提交的数据
