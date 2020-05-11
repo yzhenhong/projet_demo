@@ -1,17 +1,14 @@
 var router=require('koa-router')(),
-    koaBody = require('koa-body')({ // 处理form-data的post请求
-        multipart: true,
-    });
-const rou = require('./rou');
-const account = require('./../controller/account');
+    account = require('../controller/account');
+
 
 router.get('/',async (ctx)=>{
-    ctx.body='api'
+    ctx.body='account'
 })
 
 
 
-router.post('/add/account',async (ctx)=>{
+router.post('/add_account',async (ctx)=>{
   // console.log(ctx.request.body);
   await account.addAccount(ctx.request.body).then(res=>{
     // console.log('res',res)
@@ -22,7 +19,7 @@ router.post('/add/account',async (ctx)=>{
   })
 })
 
-router.post('/login/account',async (ctx)=>{
+router.post('/login_account',async (ctx)=>{
   // console.log(ctx.request.body);
   await account.loginAccount(ctx.request.body).then(res=>{
     // console.log('res',res)
@@ -43,31 +40,9 @@ router.post('/login/account',async (ctx)=>{
       }
     }
   }).catch(err=>{
-    console.log('err',err)
+    // console.log('err',err)
+    ctx.body= err
   })
 })
-router.get('/user/menuList',async (ctx)=>{
-  ctx.status = 200
-  let data = {
-    userId: 'userid123',
-    menuList: rou.rou
-  }
-  ctx.body = {
-    msg:"ok",
-    code: 0,
-    data
-  }
-})
-
-
-router.post('/user/login',async (ctx)=>{
-  console.log(ctx.request.body);
-  ctx.body=ctx.request.body;
-})
-router.get('/user/info',async (ctx)=>{
-  console.log(ctx.request.body);
-  ctx.body=ctx.request.body;
-})
-
 
 module.exports=router.routes();

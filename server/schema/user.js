@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-    name:String,
-    sex:String,
-    age:Number,
-    identityCard:String,
-    birthday:String
+    hospitalName:String,
+    userName:String,
+    jobTitle:String,
+    tel:String,
+    registrationTime:String,
   },
   {
     collection: 'user',

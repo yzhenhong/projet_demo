@@ -1,17 +1,16 @@
-var userModel = require('./../model/user.js');
+var earningsModel = require('./../model/earnings.js');
 
-
-// 添加用户
-function addUser (data) {
+// 添加收益
+function addEarnings (data) {
     return new Promise((resolve,reject)=>{
-      let userName = data.userName
-          userModel.findOne({userName}).then(res=>{
+      let earningsName = data.earningsName
+          earningsModel.findOne({earningsName}).then(res=>{
         // console.log(res)
         if(res){
-          reject("该用户已经存在")
+          reject("该收益已经存在")
         }else{
-          // return userModel(data).save()
-          userModel(data).save()
+          // return earningsModel(data).save()
+          earningsModel(data).save()
           .then(
             res=>{
               resolve(res);
@@ -26,10 +25,10 @@ function addUser (data) {
   }
 
 
-// 用户列表
-function userList (data) {
+// 收益列表
+function earningsList (data) {
     return new Promise((resolve,reject)=>{
-        userModel.find(data)
+        earningsModel.find(data)
         .then(
           res=>{
             resolve(res);
@@ -43,6 +42,6 @@ function userList (data) {
 
 
 module.exports = {
-    addUser,
-    userList
+    addEarnings,
+    earningsList
 }

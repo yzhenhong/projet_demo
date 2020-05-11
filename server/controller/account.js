@@ -3,9 +3,9 @@ var accountModel = require('./../model/account.js');
 // 添加账号
 function addAccount (data) {
   return new Promise((resolve,reject)=>{
-    let username = data.username
-		accountModel.findOne({username}).then(res=>{
-      console.log(res)
+    let userName = data.userName
+		accountModel.findOne({userName}).then(res=>{
+      // console.log(res)
       if(res){
         reject("该账号已经存在")
       }else{
@@ -22,17 +22,6 @@ function addAccount (data) {
       }
 		})
 	})
-  // return new Promise((resolve, reject)=>{
-  //   accountModel(data).save()
-  //     .then(
-  //       res=>{
-  //         resolve(res);
-  //       },
-  //       err=>{
-  //         reject(err);
-  //       }
-  //     )
-  // })
 }
 
 // 登录账号

@@ -1,17 +1,16 @@
-var userModel = require('./../model/user.js');
+var taskModel = require('./../model/task.js');
 
-
-// 添加用户
-function addUser (data) {
+// 添加任务
+function addTask (data) {
     return new Promise((resolve,reject)=>{
-      let userName = data.userName
-          userModel.findOne({userName}).then(res=>{
+      let taskName = data.taskName
+          taskModel.findOne({taskName}).then(res=>{
         // console.log(res)
         if(res){
-          reject("该用户已经存在")
+          reject("该任务已经存在")
         }else{
-          // return userModel(data).save()
-          userModel(data).save()
+          // return taskModel(data).save()
+          taskModel(data).save()
           .then(
             res=>{
               resolve(res);
@@ -26,10 +25,10 @@ function addUser (data) {
   }
 
 
-// 用户列表
-function userList (data) {
+// 任务列表
+function taskList (data) {
     return new Promise((resolve,reject)=>{
-        userModel.find(data)
+        taskModel.find(data)
         .then(
           res=>{
             resolve(res);
@@ -43,6 +42,6 @@ function userList (data) {
 
 
 module.exports = {
-    addUser,
-    userList
+    addTask,
+    taskList
 }
