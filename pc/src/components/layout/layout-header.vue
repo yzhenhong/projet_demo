@@ -14,6 +14,7 @@
       <el-menu-item index="1" @click="task">任务管理</el-menu-item>
       <el-menu-item index="2" @click="user">用户管理</el-menu-item>
       <el-menu-item index="3" @click="earnings">收益管理</el-menu-item>
+      <el-menu-item index="4" @click="login">登录</el-menu-item>
     </el-menu>
     <div>
       <el-dropdown  @command="handleCommand">
@@ -47,7 +48,6 @@ export default {
     if(sessionStorage.getItem('activeIndex')){
       this.activeIndex = sessionStorage.getItem('activeIndex');
     }
-    console.log(this.activeIndex)
   },
   methods: {
     task() {
@@ -64,7 +64,15 @@ export default {
     },
     earnings() {
       sessionStorage.setItem('activeIndex', JSON.stringify(3));
-      console.log('earnings')
+       if(this.$route.path!='/list/earnings'){
+        this.$router.push('/list/earnings')
+      }
+    },
+    login() {
+      sessionStorage.setItem('activeIndex', JSON.stringify(4));
+       if(this.$route.path!='/login/login-index'){
+        this.$router.push('/login/login-index')
+      }
     },
     handleCommand(command) {
       if(command=='modify-password') {
@@ -80,6 +88,7 @@ export default {
 <style scoped lang="less">
 .layout-header {
   position: fixed;
+  z-index: 999;
   top: 0px;
   left: 0px;
   right: 0px;

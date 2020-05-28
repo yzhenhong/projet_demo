@@ -1,0 +1,10 @@
+<!--logs.wxml-->
+<view class="logs-home">
+	<view class="img">
+		<image src="/images/头像.png"></image>
+	</view>
+	<view>	李夏明	</view>
+	<view>深圳市南山区人民医院深圳市南山区人民医院</view>
+  <view><image src="/images/btn_lqrw.svg"></image></view>
+  <view><image src="/images/btn_rwjl.svg"></image></view>
+</view>

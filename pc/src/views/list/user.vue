@@ -2,6 +2,7 @@
   <div class="user-list">
     <layout-header></layout-header>
     <div class="search">
+      <el-button type="primary" @click="addUser">新增用户</el-button>
       <el-input
         v-model="input"
         placeholder="请输入内容"
@@ -14,17 +15,17 @@
       style="width: 100%"
     >
       <el-table-column
-        prop="institution"
+        prop="hospitalName"
         label="供职单位"
       >
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="userName"
         label="姓名"
       >
       </el-table-column>
       <el-table-column
-        prop="title"
+        prop="jobTitle"
         label="职位名称"
       >
       </el-table-column>
@@ -34,7 +35,7 @@
       >
       </el-table-column>
       <el-table-column
-        prop="time"
+        prop="registrationTime"
         align="center"
         label="注册时间"
       >
@@ -64,6 +65,8 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex"
+const {  mapState, mapActions } = createNamespacedHelpers("user")
 import layoutHeader from '@/components/layout/layout-header.vue'
 export default {
   name: 'userList',
@@ -74,40 +77,39 @@ export default {
     return {
       listTotal: 0,
       input: '',
-      tableData: [
-        {
-          institution: '深圳市南山区人民医院',
-          name: '王小虎',
-          title: '医师',
-          tel: '1870931271',
-          time: '2020-05-06'
-        }, {
-          institution: '深圳市南山区人民医院',
-          name: '王小虎',
-          title: '医师',
-          tel:'1255',
-          time: '2020-05-06'
-        }, {
-          institution: '深圳市南山区人民医院',
-          name: '王小虎',
-          title: '医师',
-        tel:'12565655',
-        time: '2020-05-06'
-        }, {
-          institution: '深圳市南山区人民医院3',
-          name: '王小虎',
-          title: '医师',
-          tel:'654645645',
-          time: '2020-05-06'
-        }
-      ]
+      tableData: []
     }
+  },
+  computed: {
+    ...mapState([
+      'userid',
+      'token',
+      'userName',
+    ]),
   },
   methods: {
     deleteRow(index, rows) {
       console.log(index, rows)
+    },
+    getList() {
+      this.$ajax.post('/api/user/usr_list').then(res => {
+        console.log(res)
+        this.tableData = res.data
+        this.listTotal = res.data.length
+      }).catch(err => {
+        console.log(err)
+      
+      })
+    },
+    addUser () {
+      this.$router.push('/add/user')
     }
   },
+  created () {
+    console.log('user-list页面：', this.$store.state.user.userName)
+    console.log(this.userName)
+    this.getList()
+  }
 }
 </script>
 

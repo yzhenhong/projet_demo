@@ -34,6 +34,11 @@ const routes = [
     name: 'task-particulars',
     component: () => import ('@/views/task/particulars.vue')
   },
+  {
+    path: '/calendar',
+    name: 'calendar',
+    component: () => import ('@/views/example/calendar.vue')
+  },
 ]
 
 const router = new VueRouter({

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { getToken } from '@/utils/auth'
 import layoutMain from '@/components/layout/layout-main.vue'
 
 const _import = require('./_import_' + process.env.NODE_ENV)
@@ -11,11 +12,11 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 Vue.use(VueRouter)
 
 const routes = [
-    // {
-    //     path: '/',
-    //     name: 'default',
-    //     redirect: '/home/index',
-    // },
+    {
+        path: '/',
+        name: 'default',
+        redirect: '/list/task',
+    },
     {
         path: '/home',
         name: 'home',
@@ -69,7 +70,39 @@ const routes = [
                 name: 'task',
                 component: () => import ('@/views/list/task.vue')
             },
+            {
+                path: 'earnings',
+                name: 'earnings',
+                component: () => import ('@/views/list/earnings.vue')
+            },
         ]
+    },
+    {
+        path: '/add',
+        name: 'add',
+        component: layoutMain,
+        children: [
+            {
+                path: 'user',
+                name: 'add-user',
+                component: () => import ('@/views/add/user.vue')
+            },
+        ]
+    },
+    {
+        path: '/map',
+        name: 'map',
+        component: () => import ('@/views/example/map.vue')
+    },
+    {
+        path: '/highcharts',
+        name: 'highcharts',
+        component: () => import ('@/views/example/highcharts.vue')
+    },
+    {
+        path: '/route',
+        name: 'route',
+        component: () => import ('@/views/example/route.vue')
     },
     // {
     //     path: '/404',
@@ -106,14 +139,23 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-    NProgress.start()
-    next()
-})
+// router.beforeEach((to, from, next) => {
+//     console.log('router.beforeEach')
+//     NProgress.start()
+//     next()
+//     let token = getToken()
+//     console.log('token',token)
+//     if(!token) {
+//         next('/login/login-index');
+//     } else {
+//         next()
+//     }
+// })
 
-router.afterEach((to, from) => {
-    NProgress.done()
-})
+// router.afterEach((to, from) => {
+//     console.log('router.afterEach')
+//     NProgress.done()
+// })
 
 
 export default router

@@ -37,7 +37,7 @@ service.interceptors.request.use(
 // respone interceptor
 service.interceptors.response.use(
   response => {
-    console.log(response)
+    // console.log(response)
     // return response;
     if (response) {
       switch (response.status) {

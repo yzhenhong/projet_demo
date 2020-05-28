@@ -1,0 +1,6 @@
+/* pages/list/list.wxss */
+.list{
+  width: 750rpx;
+  height: 100px;
+  background: red;
+}
