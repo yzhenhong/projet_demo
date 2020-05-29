@@ -24,6 +24,11 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  externals: {
+    'BMap': 'BMap',
+    'BMapLib': 'BMapLib',
+    'BMAP_ANCHOR_TOP_RIGHT': 'BMAP_ANCHOR_TOP_RIGHT',
+  },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

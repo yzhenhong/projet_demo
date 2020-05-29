@@ -1,32 +1,71 @@
 <template>
   <div class="task-list">
-    <layout-header></layout-header>
+    <!-- <layout-header></layout-header> -->
     <div class="search">
       <el-button type="primary">创建任务</el-button>
       <div>
         省市
-        <el-select v-model="fromData.province" placeholder="请选择省市">
-          <el-option label="江西省" value="360121"></el-option>
-          <el-option label="广东省" value="123456"></el-option>
+        <el-select
+          v-model="fromData.province"
+          placeholder="请选择省市"
+        >
+          <el-option
+            label="江西省"
+            value="360121"
+          ></el-option>
+          <el-option
+            label="广东省"
+            value="123456"
+          ></el-option>
         </el-select>
-         任务状态
-        <el-select v-model="fromData.status" placeholder="请选择任务状态">
-          <el-option label="全部" value="0"></el-option>
-          <el-option label="状态1" value="1"></el-option>
-          <el-option label="状态2" value="2"></el-option>
-          <el-option label="状态3" value="3"></el-option>
+        任务状态
+        <el-select
+          v-model="fromData.status"
+          placeholder="请选择任务状态"
+        >
+          <el-option
+            label="全部"
+            value="0"
+          ></el-option>
+          <el-option
+            label="状态1"
+            value="1"
+          ></el-option>
+          <el-option
+            label="状态2"
+            value="2"
+          ></el-option>
+          <el-option
+            label="状态3"
+            value="3"
+          ></el-option>
         </el-select>
-          验证通过
-        <el-select v-model="fromData.verification" placeholder="请选择验证状态">
-          <el-option label="全部" value="0"></el-option>
-          <el-option label="通过" value="1"></el-option>
-          <el-option label="未通过" value="2"></el-option>
+        验证通过
+        <el-select
+          v-model="fromData.verification"
+          placeholder="请选择验证状态"
+        >
+          <el-option
+            label="全部"
+            value="0"
+          ></el-option>
+          <el-option
+            label="通过"
+            value="1"
+          ></el-option>
+          <el-option
+            label="未通过"
+            value="2"
+          ></el-option>
         </el-select>
         <el-input
           v-model="fromData.keyword"
           placeholder="输入关键词查询"
         ></el-input>
-        <el-button type="primary" @click="search">查询</el-button>
+        <el-button
+          type="primary"
+          @click="search"
+        >查询</el-button>
       </div>
     </div>
     <el-table
@@ -35,27 +74,27 @@
       style="width: 100%"
     >
       <el-table-column
-        prop="task"
+        prop="taskName"
         label="任务名称"
       >
       </el-table-column>
       <el-table-column
-        prop="hospital"
+        prop="hospitalName"
         label="所属医院"
       >
       </el-table-column>
       <el-table-column
-        prop="time"
+        prop="deadlineW"
         label="截至时间"
       >
       </el-table-column>
       <el-table-column
-        prop="state"
+        prop="taskState"
         label="任务状态"
       >
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="receiver"
         align="center"
         label="领取人"
       >
@@ -63,12 +102,14 @@
       <el-table-column
         fixed="right"
         label="操作"
-        width="120">
+        width="120"
+      >
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="deleteRow(scope.$index, tableData)"
             type="text"
-            size="small">
+            size="small"
+          >
             编辑
           </el-button>
         </template>
@@ -85,6 +126,8 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex"
+const {  mapState, mapActions } = createNamespacedHelpers("user")
 import layoutHeader from '@/components/layout/layout-header.vue'
 export default {
   name: 'taskList',
@@ -93,50 +136,44 @@ export default {
   },
   data() {
     return {
-      fromData:{
+      fromData: {
         province: '',
         status: '0',
-        verification:'0',
+        verification: '0',
         keyword: '',
       },
-      listTotal: 100,
-      tableData: [
-        {
-          task: '确认医院取号流程',
-          hospital: '深圳市蛇口人民医院',
-          time: '2019/09/19',
-          state: '未发布',
-          name: '李小明'
-        }, {
-          task: '确认医院取号流程',
-          hospital: '深圳市蛇口人民医院',
-          time: '2019/09/19',
-          state:'未发布',
-          name: '李小明'
-        }, {
-          task: '确认医院取号流程',
-          hospital: '深圳市蛇口人民医院',
-          time: '2019/09/19',
-        state:'未发布',
-        name: '李小明'
-        }, {
-          task: '确认医院取号流程',
-          hospital: '深圳市蛇口人民医院',
-          time: '2019/09/19',
-          state:'未发布',
-         name: '李小明'
-        }
-      ]
+      listTotal: 0,
+      tableData: []
     }
   },
+  computed: {
+    ...mapState([
+      'userid',
+      'token',
+      'userName',
+    ]),
+  },
   methods: {
-    search () {
+    search() {
       console.log(this.fromData)
     },
     deleteRow(index, rows) {
       console.log(index, rows)
-    }
+    },
+    getList() {
+      this.$ajax.post('/api/task/task_list').then(res => {
+        console.log(res)
+        this.tableData = res.data
+        this.listTotal = res.data.length
+      }).catch(err => {
+        console.log(err)
+      })
+    },
   },
+  created() {
+    console.log('task-list页面：', this.$store.state.user)
+    this.getList()
+  }
 }
 </script>
 
@@ -156,23 +193,21 @@ export default {
     height: 34px;
     margin-right: 20px;
     border-radius: 2px;
-   
   }
   .search /deep/.el-button {
     width: 100px;
     height: 34px;
-    
   }
-  /deep/.el-table{
+  /deep/.el-table {
     margin-top: 20px;
-    .cell{
+    .cell {
       text-align: center;
     }
-    th{
-      background: #F8F8F8;
+    th {
+      background: #f8f8f8;
     }
   }
-  /deep/.el-pagination{
+  /deep/.el-pagination {
     margin-top: 20px;
     display: flex;
     justify-content: center;
